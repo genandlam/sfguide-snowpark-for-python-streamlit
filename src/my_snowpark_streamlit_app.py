@@ -3,6 +3,7 @@ from snowflake.snowpark.session import Session
 from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
+import json
 
 st.set_page_config(
      page_title="Environment Data Atlas",
@@ -17,15 +18,9 @@ st.set_page_config(
 
 # Create Session object
 def create_session_object():
-    connection_parameters = {
-      "account"   : "",
-      "user"      : "",
-      "password"  : "",
-      "role"      : "",
-      "warehouse" : "",
-      "database"  : "KNOEMA_ENVIRONMENT_DATA_ATLAS",
-      "schema"    : "ENVIRONMENT"
-    }
+    with open('./include/state.json') as sdf:
+        connection_parameters = json.load(sdf)    
+    
     session = Session.builder.configs(connection_parameters).create()
     return session
 
