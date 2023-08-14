@@ -18,7 +18,7 @@ st.set_page_config(
 
 # Create Session object
 def create_session_object():
-    with open('./include/state.json') as sdf:
+    with open('connection.json') as sdf:
         connection_parameters = json.load(sdf)    
     
     session = Session.builder.configs(connection_parameters).create()
