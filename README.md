@@ -5,6 +5,7 @@
 <br/>
 to start application on local: 
 conda activate snowpark
+streamlit run my_snowpark_streamlit_app.py
 ___
 
 <br/>
